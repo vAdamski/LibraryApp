@@ -6,5 +6,6 @@ namespace LibraryApp.Domain
     {
         bool AddNewBook(BookDto bookDto);
         List<BookDto> GetAllBookDtos();
+        bool DeleteBook(int bookId);
     }
 }

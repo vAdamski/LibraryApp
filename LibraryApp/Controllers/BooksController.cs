@@ -19,26 +19,76 @@ namespace LibraryApp.Controllers
         {
             _libraryMenager = libraryMenager;
             _viewModelMapper = viewModelMapper;
-
-            ////Initialize books
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Kamien Filozoficzny", Author = "J.K. Rowling", ISBN = "0-306-40615" });
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Komnata Tajemnic", Author = "J.K. Rowling", ISBN = "0-306-40616" });
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Wiezien Azkabanu", Author = "J.K. Rowling", ISBN = "0-306-40617" });
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Czara Ognia", Author = "J.K. Rowling", ISBN = "0-306-40618" });
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Zakon Feniksa", Author = "J.K. Rowling", ISBN = "0-306-40619" });
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Ksiaze Polkrwi", Author = "J.K. Rowling", ISBN = "0-306-40620" });
-            //_libraryMenager.AddNewBook(new BookDto { Title = "Harry Potter i Insygnia Smierci", Author = "J.K. Rowling", ISBN = "0-306-40621" });
         }
 
         [HttpGet]
         [Route("getAllBooks")]
         public IActionResult GetAllBooks()
         {
-            var bookDtos = _libraryMenager.GetAllBookDtos();
+            try
+            {
+                var bookDtos = _libraryMenager.GetAllBookDtos();
 
-            var bookViewModels = _viewModelMapper.Map(bookDtos);
+                var bookViewModels = _viewModelMapper.Map(bookDtos);
 
-            return Ok(bookViewModels);
+                return Ok(bookViewModels);
+            }
+            catch (Exception ex)
+            {
+                //Add logger
+                throw;
+            }
+        }
+
+        [HttpPost]
+        [Route("addBookToDatabase")]
+        public IActionResult AddBookToDatabase([FromBody]BookViewModel bookViewModel)
+        {
+            try
+            {
+                if(bookViewModel == null)
+                {
+                    return NotFound();
+                }
+
+                var bookDto = _viewModelMapper.Map(bookViewModel);
+
+                var result = _libraryMenager.AddNewBook(bookDto);
+
+                if(!result)
+                {
+                    return NotFound();
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                //Add logger
+                throw;
+            }
+        }
+        
+        [HttpGet]
+        [Route("deleteBookFromDatabase")]
+        public IActionResult DeleteBookFromDatabase(int id)
+        {
+            try
+            {
+                var result = _libraryMenager.DeleteBook(id);
+
+                if(!result)
+                {
+                    return NotFound();
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

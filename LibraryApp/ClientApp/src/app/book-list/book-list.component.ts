@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { HtmlParser } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { BookViewModel } from '../Models/book-view-model.model';
 
@@ -21,6 +22,17 @@ export class BookListComponent implements OnInit {
   getAllBooks() {
     this.http.get<Array<BookViewModel>>("https://localhost:44327/" + "book/" + "getAllBooks").subscribe(response => {
       this.books = response;
+    },
+      error => {
+        console.log(error);
+      });
+  }
+
+
+
+  deleteBookFromDatabase(bookId) {
+    this.http.get("https://localhost:44327/" + "book/" + "deleteBookFromDatabase" + "?id=" + bookId).subscribe(response => {
+      window.location.reload();
     },
       error => {
         console.log(error);

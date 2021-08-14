@@ -34,5 +34,16 @@ namespace LibraryApp.Domain
 
             return _bookRepository.Add(entity);
         }
+
+        public bool DeleteBook(int bookId)
+        {
+            var book = new BookDto();
+
+            book.Id = bookId;
+
+            var bookEntity = _dtoMapper.Map(book);
+
+            return _bookRepository.Delete(bookEntity);
+        }
     }
 }
