@@ -33,7 +33,7 @@ export class BookListComponent implements OnInit {
 
   deleteBookFromDatabase(bookId) {
     this.http.get("https://localhost:44327/" + "book/" + "deleteBookFromDatabase" + "?id=" + bookId).subscribe(response => {
-      window.location.reload();
+      location.reload();
     },
       error => {
         console.log(error);

@@ -1,0 +1,26 @@
+<h1>List of Readers</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Actions</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reader of readers">
+      <th>{{reader.id}}</th>
+      <th>{{reader.name}}</th>
+      <th>{{reader.surname}}</th>
+      <th>{{reader.email}}</th>
+      <th>{{reader.phoneNumber}}</th>
+      <th><button (click)="editReader(reader)" type="button" class="btn btn-outline-info">Edit</button></th>
+      <th><button (click)="deleteReaderFromDatabase(reader.id)" type="button" class="btn btn-outline-danger">Delete</button></th>
+    </tr>
+  </tbody>
+</table>
+<button [routerLink]="['/addReader']" type="button" class="btn btn-outline-success">Add Reader</button>

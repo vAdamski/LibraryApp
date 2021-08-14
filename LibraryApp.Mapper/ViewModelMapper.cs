@@ -16,7 +16,7 @@ namespace LibraryApp.Mapper
             _mapper = new MapperConfiguration(config =>
             {
                 config.CreateMap<BookDto, BookViewModel>().ReverseMap();
-                config.CreateMap<BorrowDto, BookViewModel>().ReverseMap();
+                config.CreateMap<BorrowDto, BorrowViewModel>().ReverseMap();
                 config.CreateMap<ReaderDto, ReaderViewModel>().ReverseMap();
             }).CreateMapper();
         }

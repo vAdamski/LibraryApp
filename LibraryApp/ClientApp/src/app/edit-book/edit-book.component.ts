@@ -18,7 +18,6 @@ export class EditBookComponent implements OnInit {
 
   ngOnInit() {
     this.book = history.state.data;
-    console.log(this.book);
   }
 
   onItemChange(event: any) {
