@@ -54,6 +54,22 @@ namespace LibraryApp.Database
             return false;
         }
 
+        public bool Update(Entity entity)
+        {
+            var entityToUpdate = DbSet.FirstOrDefault(x => x.Id == entity.Id);
+
+            if (entityToUpdate != null)
+            {
+                entityToUpdate = entity;
+
+                DbSet.Update(entityToUpdate);
+
+                return SaveChanges();
+            }
+
+            return false;
+        }
+
         public bool SaveChanges()
         {
             return _dbContext.SaveChanges() > 0;

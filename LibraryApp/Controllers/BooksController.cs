@@ -48,6 +48,7 @@ namespace LibraryApp.Controllers
             {
                 if(bookViewModel == null)
                 {
+                    //Add logger
                     return NotFound();
                 }
 
@@ -57,6 +58,7 @@ namespace LibraryApp.Controllers
 
                 if(!result)
                 {
+                    //Add logger
                     return NotFound();
                 }
 
@@ -79,6 +81,7 @@ namespace LibraryApp.Controllers
 
                 if(!result)
                 {
+                    //Add logger
                     return NotFound();
                 }
 
@@ -86,7 +89,38 @@ namespace LibraryApp.Controllers
             }
             catch (Exception ex)
             {
+                //Add logger
+                throw;
+            }
+        }
 
+        [HttpPost]
+        [Route("editBookInDatabase")]
+        public IActionResult EditBookChanges([FromBody]BookViewModel bookViewModel)
+        {
+            try
+            {
+                var bookDto = _viewModelMapper.Map(bookViewModel);
+
+                if(bookDto == null)
+                {
+                    //Add logger
+                    return NotFound();
+                }
+
+                var result = _libraryMenager.UpdateBook(bookDto);
+
+                if(!result)
+                {
+                    //Add logger
+                    return NotFound();
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                //Add logger
                 throw;
             }
         }

@@ -18,7 +18,7 @@
       <th>{{book.author}}</th>
       <th>{{book.isbn}}</th>
       <th>{{book.isAvailable}}</th>
-      <th><button (click)="editBook(book.id)" type="button" class="btn btn-outline-info">Edit</button></th>
+      <th><button (click)="editBook(book)" type="button" class="btn btn-outline-info">Edit</button></th>
       <th><button (click)="deleteBookFromDatabase(book.id)" type="button" class="btn btn-outline-danger">Delete</button></th>
     </tr>
   </tbody>

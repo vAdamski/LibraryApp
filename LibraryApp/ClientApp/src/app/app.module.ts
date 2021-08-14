@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { BookListComponent } from './book-list/book-list.component'
 import { AddBookComponent } from './add-book/add-book.component'
+import { EditBookComponent } from './edit-book/edit-book.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddBookComponent } from './add-book/add-book.component'
     NavMenuComponent,
     HomeComponent,
     BookListComponent,
-    AddBookComponent
+    AddBookComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { AddBookComponent } from './add-book/add-book.component'
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'bookList', component: BookListComponent },
       { path: 'addBook', component: AddBookComponent },
+      { path: 'editBook', component: EditBookComponent },
     ])
   ],
   providers: [],

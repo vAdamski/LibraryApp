@@ -8,6 +8,7 @@ namespace LibraryApp.Domain
         bool Add(Entity entity);
         bool Delete(Entity entity);
         List<Entity> GetAll();
+        bool Update(Entity entity);
         bool SaveChanges();
     }
 }

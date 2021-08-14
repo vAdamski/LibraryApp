@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { HtmlParser } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BookViewModel } from '../Models/book-view-model.model';
 
 @Component({
@@ -12,7 +13,7 @@ export class BookListComponent implements OnInit {
 
   books: Array<BookViewModel>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.getAllBooks();
@@ -37,5 +38,9 @@ export class BookListComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  editBook(bookObject) {
+    this.router.navigate(['/editBook'], { state: { data: bookObject } });
   }
 }
