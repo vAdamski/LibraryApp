@@ -33,6 +33,18 @@ namespace LibraryApp.Database
             return list;
         }
 
+        public Entity GetById(int id)
+        {
+            var entity = DbSet.FirstOrDefault(x => x.Id == id);
+
+            if (entity != null)
+            {
+                return entity;
+            }
+
+            return null;
+        }
+
         public bool Add(Entity entity)
         {
             DbSet.Add(entity);
@@ -56,13 +68,9 @@ namespace LibraryApp.Database
 
         public bool Update(Entity entity)
         {
-            var entityToUpdate = DbSet.FirstOrDefault(x => x.Id == entity.Id);
-
-            if (entityToUpdate != null)
+            if (entity != null)
             {
-                entityToUpdate = entity;
-
-                DbSet.Update(entityToUpdate);
+                DbSet.Update(entity);
 
                 return SaveChanges();
             }

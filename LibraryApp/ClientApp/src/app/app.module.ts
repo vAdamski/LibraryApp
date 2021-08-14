@@ -7,9 +7,14 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { BookListComponent } from './book-list/book-list.component'
-import { AddBookComponent } from './add-book/add-book.component'
-import { EditBookComponent } from './edit-book/edit-book.component'
+import { BookListComponent } from './book-list/book-list.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
+import { ReaderListComponent } from './reader-list/reader-list.component';
+import { AddReaderComponent } from './add-reader/add-reader.component';
+import { EditReaderComponent } from './edit-reader/edit-reader.component';
+import { AddBorrowerComponent } from './add-borrower/add-borrower.component';
+import { EditBorrowerComponent } from './edit-borrower/edit-borrower.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { EditBookComponent } from './edit-book/edit-book.component'
     HomeComponent,
     BookListComponent,
     AddBookComponent,
-    EditBookComponent
+    EditBookComponent,
+    ReaderListComponent,
+    AddReaderComponent,
+    EditReaderComponent,
+    AddBorrowerComponent,
+    EditBorrowerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,6 +39,11 @@ import { EditBookComponent } from './edit-book/edit-book.component'
       { path: 'bookList', component: BookListComponent },
       { path: 'addBook', component: AddBookComponent },
       { path: 'editBook', component: EditBookComponent },
+      { path: 'readerList', component: ReaderListComponent },
+      { path: 'addReader', component: AddReaderComponent },
+      { path: 'editReader', component: EditReaderComponent },
+      { path: 'addBorrower', component: AddBorrowerComponent },
+      { path: 'editBorrower', component: EditBorrowerComponent },
     ])
   ],
   providers: [],
