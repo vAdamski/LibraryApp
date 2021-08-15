@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace LibraryApp.Domain
 {
+     /// <summary>
+     /// Map entity on dto and reverse
+     /// Map list entity on dto reverse
+     /// </summary>
     public interface IDtoMapper
     {
         BookDto Map(Book book);

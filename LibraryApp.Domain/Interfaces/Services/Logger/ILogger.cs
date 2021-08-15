@@ -8,6 +8,10 @@ namespace LibraryApp.Domain
 {
     public interface ILogger
     {
+        /// <summary>
+        /// Log message
+        /// </summary>
+        /// <param name="message">Message to log</param>
         void Log(string message);
     }
 }

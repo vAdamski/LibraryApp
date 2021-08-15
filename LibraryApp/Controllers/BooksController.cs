@@ -21,6 +21,10 @@ namespace LibraryApp.Controllers
             _viewModelMapper = viewModelMapper;
         }
 
+        /// <summary>
+        /// Return all books from database to frontend
+        /// </summary>
+        /// <returns>Return Ok-200(list of books)</returns>
         [HttpGet]
         [Route("getAllBooks")]
         public IActionResult GetAllBooks()
@@ -40,6 +44,10 @@ namespace LibraryApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Return all books unborrowed from database to frontend
+        /// </summary>
+        /// <returns>Return OK-200(list of unborrowed books)</returns>
         [HttpGet]
         [Route("getAllUnborrowedBooks")]
         public IActionResult GetAllUnborrowedBooks()
@@ -59,6 +67,11 @@ namespace LibraryApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Add book to database
+        /// </summary>
+        /// <param name="bookViewModel">View model book</param>
+        /// <returns>Return OK-200 if adding goes fine other way NotFound</returns>
         [HttpPost]
         [Route("addBookToDatabase")]
         public IActionResult AddBookToDatabase([FromBody]BookViewModel bookViewModel)
@@ -90,6 +103,11 @@ namespace LibraryApp.Controllers
             }
         }
         
+        /// <summary>
+        /// Deleting book from database
+        /// </summary>
+        /// <param name="id">Book id to delete</param>
+        /// <returns>Return Ok-200 if deleting goes fine otherway NotFound</returns>
         [HttpGet]
         [Route("deleteBookFromDatabase")]
         public IActionResult DeleteBookFromDatabase(int id)
@@ -113,6 +131,11 @@ namespace LibraryApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Update book in database
+        /// </summary>
+        /// <param name="bookViewModel">View model book</param>
+        /// <returns>Return Ok-200 if updating goes fine otherway NotFound</returns>
         [HttpPost]
         [Route("editBookInDatabase")]
         public IActionResult EditBookChanges([FromBody]BookViewModel bookViewModel)
@@ -144,6 +167,11 @@ namespace LibraryApp.Controllers
             }
         }
 
+        /// <summary>
+        /// Swap IsBorrowed property in database
+        /// </summary>
+        /// <param name="bookId">Book id</param>
+        /// <returns>Return Ok-200 if swap goes fine otherway NotFound</returns>
         [HttpGet]
         [Route("changeBookBorrowed")]
         public IActionResult ChangeBookBorrowed(int bookId)

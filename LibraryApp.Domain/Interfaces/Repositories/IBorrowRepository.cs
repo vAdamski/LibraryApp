@@ -5,6 +5,10 @@ namespace LibraryApp.Domain
 {
     public interface IBorrowRepository : IBaseRepository<Borrow>
     {
-        IEnumerable<Borrow> GetAllBooks();
+        /// <summary>
+        /// Get all books from database
+        /// </summary>
+        /// <returns>Return IEnumerable borrowers list</returns>
+        IEnumerable<Borrow> GetAllBorrowers();
     }
 }

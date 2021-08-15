@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace LibraryApp.Domain
 {
+    /// <summary>
+    /// Map dto on view model and reverse
+    /// Map list dto on view model list reverse
+    /// </summary>
     public interface IViewModelMapper
     {
         BookViewModel Map(BookDto bookDto);

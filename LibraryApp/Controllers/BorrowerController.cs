@@ -23,6 +23,10 @@ namespace LibraryApp.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Returns list of borrowers
+        /// </summary>
+        /// <returns>Return Ok-200(listo of borrowers) otherway NotFound</returns>
         [HttpGet]
         [Route("getAllBorrowers")]
         public IActionResult GetAllBorrowers()
@@ -41,6 +45,12 @@ namespace LibraryApp.Controllers
                 throw;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="borrowViewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("addBorrowerToDatabase")]
         public IActionResult AddNewBorrower([FromBody]BorrowViewModel borrowViewModel)

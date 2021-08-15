@@ -17,7 +17,7 @@ namespace LibraryApp.Database
 
         }
 
-        public IEnumerable<Borrow> GetAllBooks()
+        public IEnumerable<Borrow> GetAllBorrowers()
         {
             return DbSet.Select(x => x);
         }
