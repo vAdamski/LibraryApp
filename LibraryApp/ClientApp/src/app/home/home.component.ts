@@ -10,23 +10,4 @@ import { ReaderViewModel } from '../Models/reader-view-model.model';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-
-  borrowers: Array<BorrowerViewModel>;
-
-  constructor(private http: HttpClient, private router: Router) { }
-
-  ngOnInit() {
-    this.getAllBorrowers();
-  }
-
-  getAllBorrowers() {
-    this.http.get<Array<BorrowerViewModel>>("https://localhost:44327/" + "borrower/" + "getAllBorrowers").subscribe(response => {
-      this.borrowers = response;
-    },
-      error => {
-        console.log(error);
-      });
-  }
-
-
 }

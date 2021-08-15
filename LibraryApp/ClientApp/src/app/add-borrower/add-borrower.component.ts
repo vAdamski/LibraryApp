@@ -12,8 +12,6 @@ import { ReaderViewModel } from '../Models/reader-view-model.model';
 })
 export class AddBorrowerComponent implements OnInit {
 
-  readers: Array<ReaderViewModel>;
-  books: Array<BookViewModel>;
 
   borrower = new BorrowerViewModel();
 
