@@ -5,6 +5,6 @@ namespace LibraryApp.Domain
 {
     public interface IBookRepository : IBaseRepository<Book>
     {
-        IEnumerable<Book> GetAllBooks();
+        IEnumerable<Book> GetAllUnborrowedBooks();
     }
 }

@@ -16,5 +16,6 @@ namespace LibraryApp.Domain
         [Required, MaxLength(50)]
         public string ISBN { get; set; }
         public bool IsAvailable { get; set; }
+        public bool IsBorrowed { get; set; }
     }
 }

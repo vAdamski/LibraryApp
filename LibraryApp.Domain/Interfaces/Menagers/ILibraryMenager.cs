@@ -8,6 +8,8 @@ namespace LibraryApp.Domain
         List<BookDto> GetAllBookDtos();
         bool DeleteBook(int bookId);
         bool UpdateBook(BookDto bookDto);
+        List<BookDto> GetAllUnborrowedBookDtos();
+        bool ChangeBookBorrowed(int bookId);
 
         bool AddNewReader(ReaderDto readerDto);
         List<ReaderDto> GetAllReaderDtos();

@@ -1,6 +1,7 @@
 using LibraryApp.Database;
 using LibraryApp.Domain;
 using LibraryApp.Mapper;
+using LibraryApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,7 @@ namespace LibraryApp
             services.AddTransient<ILibraryMenager, LibraryMenager>();
             services.AddTransient<IDtoMapper, DtoMapper>();
             services.AddTransient<IViewModelMapper, ViewModelMapper>();
+            services.AddTransient<ILogger, ConsoleLogger>();
 
             var connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));

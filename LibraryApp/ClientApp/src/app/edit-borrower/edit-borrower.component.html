@@ -1,0 +1,51 @@
+<form>
+  <div class="form-group row">
+    <label for="inputReader" class="col-sm-2 col-form-label">Reader</label>
+    <div>
+      <label for="inputReader">
+        <select name="reader" [(ngModel)]="borrower.readerId">
+          <option *ngFor="let reader of readers" [value]="reader.id">
+            {{reader.name}} {{reader.surname}}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputBook" class="col-sm-2 col-form-label">Book</label>
+    <div>
+      <label for="inputBook">
+        <select name="book" [(ngModel)]="borrower.bookId">
+          <option *ngFor="let book of books" [value]="book.id">
+            {{book.title}} - {{book.author}}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputDate" class="col-sm-2 col-form-label">Date borrow</label>
+    <div>
+      <label for="inputDate">
+        <div class="col-sm-10">
+          <input type="date" id="inputDate" value="{{borrower.borrowDate}}" [(ngModel)]="borrower.borrowDate" [ngModelOptions]="{standalone: true}">
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputComments" class="col-sm-2 col-form-label">Comments</label>
+    <div>
+      <label for="inputComments">
+        <div class="col-sm-10">
+          <textarea id="inputComments" [(ngModel)]="borrower.comments" [ngModelOptions]="{standalone: true}" cols="30" rows="5">{{borrower.comments}}</textarea>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary" (click)="saveBorrowerChanges()">Save changes</button>
+    </div>
+  </div>
+</form>

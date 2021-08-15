@@ -13,6 +13,6 @@ namespace LibraryApp.Domain
         public string Author { get; set; }
         public string ISBN { get; set; }
         public bool IsAvailable { get; set; }
-
+        public bool IsBorrowed { get; set; }
     }
 }

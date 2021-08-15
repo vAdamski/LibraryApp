@@ -23,7 +23,7 @@ namespace LibraryApp.Domain
         #region BookMengaer
         public List<BookDto> GetAllBookDtos()
         {
-            var bookEntities = _bookRepository.GetAllBooks().ToList();
+            var bookEntities = _bookRepository.GetAll().ToList();
 
             return _dtoMapper.Map(bookEntities);
         }
@@ -51,6 +51,24 @@ namespace LibraryApp.Domain
             var entity = _dtoMapper.Map(bookDto);
 
             return _bookRepository.Update(entity);
+        }
+
+        public List<BookDto> GetAllUnborrowedBookDtos()
+        {
+            var books =_bookRepository.GetAllUnborrowedBooks().ToList();
+
+            var bookDtos = _dtoMapper.Map(books);
+
+            return bookDtos;
+        }
+
+        public bool ChangeBookBorrowed(int bookId)
+        {
+            var book = _bookRepository.GetById(bookId);
+
+            book.IsBorrowed = !book.IsBorrowed;
+
+            return _bookRepository.Update(book);
         }
 
         #endregion

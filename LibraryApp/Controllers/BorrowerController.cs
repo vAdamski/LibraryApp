@@ -14,11 +14,13 @@ namespace LibraryApp.Controllers
     {
         private readonly ILibraryMenager _libraryMenager;
         private readonly IViewModelMapper _viewModelMapper;
+        private readonly ILogger _logger;
 
-        public BorrowerController(ILibraryMenager libraryMenager, IViewModelMapper viewModelMapper)
+        public BorrowerController(ILibraryMenager libraryMenager, IViewModelMapper viewModelMapper, ILogger  logger)
         {
             _libraryMenager = libraryMenager;
             _viewModelMapper = viewModelMapper;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -35,7 +37,7 @@ namespace LibraryApp.Controllers
             }
             catch (Exception ex)
             {
-                //Add logger
+                _logger.Log(ex.ToString());
                 throw;
             }
         }
@@ -47,17 +49,20 @@ namespace LibraryApp.Controllers
             {
                 if (borrowViewModel == null)
                 {
-                    //Add logger
                     return NotFound();
                 }
 
                 var borrowDto = _viewModelMapper.Map(borrowViewModel);
 
-                var result = _libraryMenager.AddNewBorrower(borrowDto);
+                borrowDto.ReturnDate = borrowDto.BorrowDate.AddDays(7);
 
-                if (!result)
+                if (!(_libraryMenager.AddNewBorrower(borrowDto)))
                 {
-                    //Add logger
+                    return NotFound();
+                }
+
+                if(!(_libraryMenager.ChangeBookBorrowed(borrowDto.BookId)))
+                {
                     return NotFound();
                 }
 
@@ -65,14 +70,14 @@ namespace LibraryApp.Controllers
             }
             catch (Exception ex)
             {
-                //Add logger
+                _logger.Log(ex.ToString());
                 throw;
             }
         }
 
         [HttpGet]
         [Route("deleteBorrowerFromDatabase")]
-        public IActionResult DeleteBorrowerFromDatabase(int id)
+        public IActionResult DeleteBorrowerFromDatabase(int id, int bookId)
         {
             try
             {
@@ -80,7 +85,11 @@ namespace LibraryApp.Controllers
 
                 if (!result)
                 {
-                    //Add logger
+                    return NotFound();
+                }
+
+                if (!(_libraryMenager.ChangeBookBorrowed(bookId)))
+                {
                     return NotFound();
                 }
 
@@ -88,7 +97,7 @@ namespace LibraryApp.Controllers
             }
             catch (Exception ex)
             {
-                //Add logger
+                _logger.Log(ex.ToString());
                 throw;
             }
         }
@@ -103,7 +112,6 @@ namespace LibraryApp.Controllers
 
                 if (borrowDto == null)
                 {
-                    //Add logger
                     return NotFound();
                 }
 
@@ -111,7 +119,11 @@ namespace LibraryApp.Controllers
 
                 if (!result)
                 {
-                    //Add logger
+                    return NotFound();
+                }
+
+                if (!(_libraryMenager.ChangeBookBorrowed(borrowDto.BookId)))
+                {
                     return NotFound();
                 }
 
@@ -119,7 +131,7 @@ namespace LibraryApp.Controllers
             }
             catch (Exception ex)
             {
-                //Add logger
+                _logger.Log(ex.ToString());
                 throw;
             }
         }

@@ -4,4 +4,5 @@ export class BookViewModel {
   public author: string;
   public isbn: string;
   public isAvailable: boolean;
+  public isBorrowed: boolean;
 }

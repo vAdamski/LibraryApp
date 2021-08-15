@@ -17,9 +17,9 @@ namespace LibraryApp.Database
 
         }
 
-        public IEnumerable<Book> GetAllBooks()
+        public IEnumerable<Book> GetAllUnborrowedBooks()
         {
-            return DbSet.Select(x => x);
+            return DbSet.Select(x => x).Where(x => x.IsBorrowed == false);
         }
     }
 }

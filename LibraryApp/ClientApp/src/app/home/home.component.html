@@ -21,7 +21,7 @@
       <th>{{borrower.borrowDate}}</th>
       <th>{{borrower.returnDate}}</th>
       <th><button (click)="editBorrower(borrower)" type="button" class="btn btn-outline-info">Edit</button></th>
-      <th><button (click)="deleteBorrowerFromDatabase(borrower.id)" type="button" class="btn btn-outline-danger">Delete</button></th>
+      <th><button (click)="deleteBorrowerFromDatabase(borrower.id, borrower.book.id)" type="button" class="btn btn-outline-danger">Delete</button></th>
     </tr>
   </tbody>
 </table>

@@ -40,6 +40,25 @@ namespace LibraryApp.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("getAllUnborrowedBooks")]
+        public IActionResult GetAllUnborrowedBooks()
+        {
+            try
+            {
+                var bookDtos = _libraryMenager.GetAllUnborrowedBookDtos();
+
+                var bookViewModels = _viewModelMapper.Map(bookDtos);
+
+                return Ok(bookViewModels);
+            }
+            catch (Exception ex)
+            {
+                //Add logger
+                throw;
+            }
+        }
+
         [HttpPost]
         [Route("addBookToDatabase")]
         public IActionResult AddBookToDatabase([FromBody]BookViewModel bookViewModel)
@@ -123,6 +142,20 @@ namespace LibraryApp.Controllers
                 //Add logger
                 throw;
             }
+        }
+
+        [HttpGet]
+        [Route("changeBookBorrowed")]
+        public IActionResult ChangeBookBorrowed(int bookId)
+        {
+            var result = _libraryMenager.ChangeBookBorrowed(bookId);
+
+            if(result)
+            {
+                return NotFound();
+            }
+
+            return Ok();
         }
     }
 }

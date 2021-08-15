@@ -15,6 +15,7 @@ import { AddReaderComponent } from './add-reader/add-reader.component';
 import { EditReaderComponent } from './edit-reader/edit-reader.component';
 import { AddBorrowerComponent } from './add-borrower/add-borrower.component';
 import { EditBorrowerComponent } from './edit-borrower/edit-borrower.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EditBorrowerComponent } from './edit-borrower/edit-borrower.component';
       { path: 'editReader', component: EditReaderComponent },
       { path: 'addBorrower', component: AddBorrowerComponent },
       { path: 'editBorrower', component: EditBorrowerComponent },
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
